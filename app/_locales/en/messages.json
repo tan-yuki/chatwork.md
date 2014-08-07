@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "chatwork.md",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "Use markdown style in chatwork",
+    "description": "The description of the application"
+  }
+}
