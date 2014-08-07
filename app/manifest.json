@@ -1,6 +1,6 @@
 {
-    "name": "__MSG_appName__",
-    "version": "0.0.1",
+    "name": "chatwork.md",
+    "version": "0.0.4",
     "manifest_version": 2,
     "description": "__MSG_appDescription__",
     "icons": {
@@ -8,26 +8,20 @@
         "128": "images/icon-128.png"
     },
     "default_locale": "en",
-    "background": {
-        "scripts": [
-            "scripts/chromereload.js",
-            "scripts/background.js"
-        ]
-    },
-  "content_scripts": [
-    {
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
-      "css": [
-        "styles/main.css"
-      ],
-      "js": [
-        "scripts/contentscript.js"
-      ],
-      "run_at": "document_end",
-      "all_frames": false
-    }
-  ]
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.chatwork.com/",
+                "https://kcw.kddi.ne.jp/"
+            ],
+            "js": [
+                "scripts/loader.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "web_accessible_resources": [
+        "bower_components/marked/lib/marked.js",
+        "scripts/main.js"
+    ]
 }
