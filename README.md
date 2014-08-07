@@ -1,7 +1,7 @@
 chatwork.md
 ===========
 
-[chatwork](http://www.chatwork.com/ja/)でmarkdownスタイルを使えるようにする拡張です
+[chatwork](http://www.chatwork.com/ja/)でmarkdownスタイルを使えるようにするChrome拡張です
 
 ## How to install
 
