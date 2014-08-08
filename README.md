@@ -17,6 +17,13 @@ git clone https://github.com/tan-yuki/chatwork.md.git
 
 
 ```
+cd chatwork.md/
+bower install
+```
+
+を実行してから
+
+```
 chatwork.md/app/
 ```
 
