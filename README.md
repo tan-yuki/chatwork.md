@@ -5,7 +5,6 @@ chatwork.md
 
 ## Premise
 
-- node
 - bower
 
 ## How to install
