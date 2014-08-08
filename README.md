@@ -3,6 +3,10 @@ chatwork.md
 
 [chatwork](http://www.chatwork.com/ja/)でmarkdownスタイルを使えるようにするChrome拡張です
 
+## Premise
+
+- node
+- bower
 
 ## How to install
 
