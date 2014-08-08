@@ -19,20 +19,19 @@
   var renderTimeLine = TimeLineView.prototype.renderTimeLine;
   TimeLineView.prototype.renderTimeLine = function (a, b) {
     var b = $('<div></div>').html(b).find('div[id^="_messageId"]').each(function(i, e) {
-      var $el = $(this);
-      $el = $(e).find('.chatTimeLineMessageArea pre');
-      if ($el.length) {
-        var html = $el.html();
-        html = html.replace(/(<\/?[^>]+>)|([^<]+)/g, function(str, p1, p2) {
-          if (p1) {
-            return str;
-          }
+      var $el = $(e).find('pre');
+      if (!$el.length) {
+        return;
+      }
 
-          if (p2) {
-            return marked(p2);
-          }
+      var html = $el.html();
+      var newHtml = html
+        .replace(/\[m\]([\s\S]*)\[\/m\]/g, function(str, p) {
+          return marked(p);
         });
-        $el.html(html);
+
+      if (newHtml !== html) {
+        $el.html(newHtml);
       }
     });
     renderTimeLine.apply(TimeLineView, [a, b]);
