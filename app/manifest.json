@@ -17,6 +17,9 @@
             "js": [
                 "scripts/loader.js"
             ],
+            "css": [
+                "styles/main.css"
+            ],
             "run_at": "document_end"
         }
     ],

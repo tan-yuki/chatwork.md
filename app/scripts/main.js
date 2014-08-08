@@ -32,6 +32,7 @@
 
       if (newHtml !== html) {
         $el.html(newHtml);
+        $el.addClass('markdown')
       }
     });
     renderTimeLine.apply(TimeLineView, [a, b]);
