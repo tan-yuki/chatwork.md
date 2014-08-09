@@ -2,7 +2,8 @@
   "name": "chatworkmd",
   "version": "0.0.0",
   "dependencies": {
-    "marked": "~0.3.2"
+    "marked": "~0.3.2",
+    "underscore": "~1.6.0"
   },
   "devDependencies": {}
 }
