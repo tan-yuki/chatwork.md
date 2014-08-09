@@ -7,3 +7,12 @@
     padding-left: 18px;
     list-style-type: disc;
 }
+
+#_timeLine pre.markdown li {
+    height: auto;
+    margin: 5px 0;
+}
+
+#_timeLine pre.markdown code {
+  font-family: Courier, Courier New, sans-serif;
+}
