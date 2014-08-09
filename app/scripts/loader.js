@@ -1,13 +1,30 @@
 (function() {
   'use strict';
-  var targets = [
+
+  var loadJs = function(path) {
+    var scriptElement = document.createElement('script');
+    scriptElement.setAttribute('src', chrome.extension.getURL(path));
+    return document.documentElement.appendChild(scriptElement);
+  }
+
+  // Pathes of js libraries
+  var libraries = [
     'bower_components/marked/lib/marked.js',
-    'scripts/main.js'
+    'bower_components/underscore/underscore.js'
   ];
 
-  targets.forEach(function(js){
-  var scriptElement = document.createElement('script');
-  scriptElement.setAttribute('src', chrome.extension.getURL(js));
-    document.documentElement.appendChild(scriptElement);
+  // Entry point js file path
+  var entryPoint = 'scripts/main.js'
+
+  // Load libraries.
+  var promises = []
+  libraries.forEach(function(js){
+    promises.push(loadJs(js));
   });
+
+  // Then, load entry point javascript
+  Promise.all(promises).then(function() {
+    loadJs(entryPoint);
+  });
+
 })();
