@@ -30,11 +30,19 @@ module.exports = function (grunt) {
         watch: {
             bower: {
                 files: ['bower.json'],
-                tasks: ['bowerInstall']
+                tasks: [
+                  'bowerInstall',
+                  'concat:loadee',
+                ]
             },
             js: {
-                files: ['<%= config.app %>/scripts/{,*/}*.js'],
-                tasks: ['jshint'],
+                files: [
+                  '<%= config.app %>/scripts/{,*/}*.js',
+                  '!<%= config.app %>/scripts/loadee.js'
+                ],
+                tasks: [
+                  'concat:loadee'
+                ],
                 options: {
                     livereload: true
                 }
@@ -58,6 +66,14 @@ module.exports = function (grunt) {
                     '<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
                     '<%= config.app %>/manifest.json',
                     '<%= config.app %>/_locales/{,*/}*.json'
+                ]
+            },
+            concat: {
+                files: [
+                    '<%= config.app %>/scripts/*',
+                ],
+                tasks: [
+                    'concat:loadee'
                 ]
             }
         },
@@ -213,18 +229,27 @@ module.exports = function (grunt) {
         //         }
         //     }
         // },
-        // uglify: {
-        //     dist: {
-        //         files: {
-        //             '<%= config.dist %>/scripts/scripts.js': [
-        //                 '<%= config.dist %>/scripts/scripts.js'
-        //             ]
-        //         }
-        //     }
-        // },
-        // concat: {
-        //     dist: {}
-        // },
+        uglify: {
+            dist: {
+                files: {
+                    '<%= config.dist %>/scripts/loader.js': [
+                        '<%= config.dist %>/scripts/loader.js'
+                    ],
+                    '<%= config.dist %>/scripts/loadee.js': [
+                        '<%= config.dist %>/scripts/loadee.js'
+                    ]
+                }
+            }
+        },
+        concat: {
+            loadee: {
+                src: [
+                  '<%= config.app %>/bower_components/marked/lib/marked.js',
+                  '<%= config.app %>/scripts/main.js'
+                ],
+                dest: '<%= config.app %>/scripts/loadee.js'
+            }
+        },
 
         // Copies remaining files to places other tasks can use
         copy: {
@@ -241,6 +266,8 @@ module.exports = function (grunt) {
                         'styles/{,*/}*.css',
                         'styles/fonts/{,*/}*.*',
                         '_locales/{,*/}*.json',
+                        'scripts/loader.js',
+                        'scripts/loadee.js',
                     ]
                 }]
             }
@@ -296,7 +323,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('debug', function () {
         grunt.task.run([
-            'jshint',
+            'concat:loadee',
             'concurrent:chrome',
             'connect:chrome',
             'watch'
@@ -310,11 +337,12 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
+        'concat:loadee',
         'chromeManifest:dist',
         'useminPrepare',
         'concurrent:dist',
-        'uglify',
         'copy',
+        'uglify',
         'usemin',
         'compress'
     ]);

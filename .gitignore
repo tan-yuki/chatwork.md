@@ -4,6 +4,7 @@ temp
 dist
 .sass-cache
 app/bower_components
+app/scripts/loadee.js
 test/bower_components
 package
 .DS_Store
