@@ -15,8 +15,8 @@
 }
 
 #_timeLine pre.markdown pre {
+    background-color: #f7f7f7;
     padding: 10px;
-    background-color: whitesmoke;
 }
 
 #_timeLine pre.markdown code {

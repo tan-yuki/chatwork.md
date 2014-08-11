@@ -8,3 +8,4 @@ app/scripts/loadee.js
 test/bower_components
 package
 .DS_Store
+app/styles/pack.css
