@@ -7,31 +7,26 @@ This is a Chrome extension that supports your markdown style in [chatwork](http:
 
 ### How to use
 
-```
-[m]## hogehoge
+You can use the markdown at the chat message surrounded by `[m] ~ [/m]`.
 
-### fugafuga[/m]
-```
+#### Example
 
-
-```
-### Sample source
-
+<pre>
 [m]
-<?php
-class Message {
-  private $message;
-  public function __construct($message) {
-    $this->message = $message;
-  }
+chatwork.md
+====
 
-  public function toMarkdown() {
-    return Markdown::parse($this->message);
-  }
-}
-[/m]
+- This is chrome extension
+- This supports your markdown life
+
 ```
+$message = 'hogehoge';
+$markdown = Markdown::parse($message);
+```
+[/m]
+</pre>
 
+![Sample usage for chatwork.md](/image/example-01.png)
 
 ## How to install
 
