@@ -90,21 +90,24 @@
    * @return {String} Timeline html that has been converted.
    */
   util.onRenderTimeLine = function(timeline) {
-    return $('<div></div>').html(timeline).find('.chatTimeLineMessage').each(function(i, e) {
-      var $el = $(e).find('pre');
-      if (!$el.length) {
-        return;
-      }
+    var $timeline = $('<div></div>').html(timeline);
+    var $messages = $timeline.find('.chatTimeLineMessage');
+    if (!$messages.length) {
+      return;
+    }
 
-      var m = $el.html();
+    $messages.find('pre').each(function() {
+      var $this = $(this);
+      var m = $this.html();
 
       if (!util.hasMarkdownTag(m)) {
         return;
       }
 
-      m = util.convertMessage(m);
-      $el.html(m);
+      $this.html(util.convertMessage(m));
     });
+
+    return $timeline.html();
   };
 
   root.util = util;
