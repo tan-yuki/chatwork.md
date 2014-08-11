@@ -55,8 +55,11 @@ module.exports = function (grunt) {
         files: ['Gruntfile.js']
       },
       styles: {
-        files: ['<%= config.app %>/styles/{,*/}*.css'],
-        tasks: [],
+        files: [
+          '<%= config.app %>/styles/{,*/}*.css',
+          '!<%= config.app %>/styles/pack.css'
+        ],
+        tasks: ['concat:styles'],
         options: {
           livereload: true
         }
@@ -240,11 +243,19 @@ module.exports = function (grunt) {
     concat: {
       loadee: {
         src: [
+          '<%= config.app %>/scripts/highlight.pack.js',
           '<%= config.app %>/bower_components/marked/lib/marked.js',
           '<%= config.app %>/scripts/util.js',
           '<%= config.app %>/scripts/main.js',
         ],
         dest: '<%= config.app %>/scripts/loadee.js'
+      },
+      styles: {
+        src: [
+          '<%= config.app %>/styles/{,*/}*.css',
+          '!<%= config.app %>/styles/pack.css'
+        ],
+        dest: '<%= config.app %>/styles/pack.css'
       }
     },
 
@@ -257,12 +268,7 @@ module.exports = function (grunt) {
           cwd: '<%= config.app %>',
           dest: '<%= config.dist %>',
           src: [
-            '*.{ico,png,txt}',
-            'images/{,*/}*.{webp,gif}',
-            '{,*/}*.html',
-            'styles/{,*/}*.css',
-            'styles/fonts/{,*/}*.*',
-            '_locales/{,*/}*.json',
+            'styles/pack.css',
             'scripts/loader.js',
             'scripts/loadee.js',
           ]

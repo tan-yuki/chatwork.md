@@ -13,9 +13,11 @@
     pedantic: false,
     sanitize: true,
     smartLists: true,
-    smartypants: false
+    smartypants: false,
+    highlight: function (code) {
+      return hljs.highlightAuto(code).value;
+    }
   });
-
 
   var renderTimeLine = TimeLineView.prototype.renderTimeLine;
   TimeLineView.prototype.renderTimeLine = function (a, b) {
