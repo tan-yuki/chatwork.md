@@ -319,7 +319,7 @@ module.exports = function (grunt) {
     crx: {
       dist: {
         src: 'dist/',
-        dest: 'package/',
+        dest: 'crx/',
         filename: config.name + '.crx',
         privateKey: 'package/' + config.name + '.pem'
       }

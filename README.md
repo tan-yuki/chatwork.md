@@ -3,6 +3,8 @@ chatwork.md
 
 This is a Chrome extension that supports your markdown style in [chatwork](http://www.chatwork.com/ja/)
 
+- Use this extension __AT YOUR OWN RISK__
+
 ### How to use
 
 ```
@@ -33,14 +35,13 @@ class Message {
 
 ## How to install
 
+Use this `crx` file:
+
 ```
-git clone https://github.com/tan-yuki/chatwork.md.git
-cd chatwork.md/
-npm install
-grunt build
+crx/chatworkmd.crx
 ```
 
-then, load `chatwork.md/dist/` directory in chrome extension page.
+Drag & Drop this file into your chrome extension page.
 
 ## TODO
 
