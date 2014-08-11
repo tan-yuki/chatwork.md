@@ -15,10 +15,14 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
+  // manifest.json
+  var manifest = grunt.file.readJSON('app/manifest.json');
+
   // Configurable paths
   var config = {
     app: 'app',
-    dist: 'dist'
+    dist: 'dist',
+    name: 'chatworkmd'
   };
 
   grunt.initConfig({
@@ -300,8 +304,7 @@ module.exports = function (grunt) {
       dist: {
         options: {
           archive: function() {
-            var manifest = grunt.file.readJSON('app/manifest.json');
-            return 'package/chatwork.md-' + manifest.version + '.zip';
+            return 'package/' + config.name + '.zip';
           }
         },
         files: [{
@@ -310,6 +313,15 @@ module.exports = function (grunt) {
           src: ['**'],
           dest: ''
         }]
+      }
+    },
+
+    crx: {
+      dist: {
+        src: 'dist/',
+        dest: 'package/',
+        filename: config.name + '.crx',
+        privateKey: 'package/' + config.name + '.pem'
       }
     }
   });
@@ -337,7 +349,7 @@ module.exports = function (grunt) {
     'copy',
     'uglify',
     'usemin',
-    'compress'
+    'crx:dist'
   ]);
 
   grunt.registerTask('default', [
