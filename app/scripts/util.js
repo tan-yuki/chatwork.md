@@ -98,7 +98,7 @@
 
       var m = $el.html();
 
-      if (!hasMarkdownTag(m)) {
+      if (!util.hasMarkdownTag(m)) {
         return;
       }
 
