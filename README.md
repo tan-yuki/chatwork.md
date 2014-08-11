@@ -18,8 +18,12 @@ chatwork.md
 
 - This is chrome extension
 - This supports your markdown life
+- This escapes all emoticons
+  - :)
+  - :p
+  - (nod)
 
-```
+```php
 $message = 'hogehoge';
 $markdown = Markdown::parse($message);
 ```
