@@ -271,6 +271,7 @@ module.exports = function (grunt) {
             'styles/pack.css',
             'scripts/loader.js',
             'scripts/loadee.js',
+            '_locales/en/messages.json'
           ]
         }]
       }
@@ -363,4 +364,5 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
 };
