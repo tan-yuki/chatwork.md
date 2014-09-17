@@ -45,3 +45,7 @@ Drag & Drop this file into your chrome extension page.
 ## TODO
 
 See [issues](https://github.com/tan-yuki/chatwork.md/issues).
+
+## License
+
+BSD. See [highlight.js license](https://github.com/isagalaev/highlight.js/blob/master/LICENSE).
